@@ -1,0 +1,21 @@
+.Nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+}
+
+.Nav input {
+    outline: none;
+    font-size: 1.5rem;
+    border: 1px solid transparent;
+}
+
+.Nav input:focus {
+    border-bottom: 1px solid #000000;
+}
+
+.Nav span {
+    font-size: 1.5rem;
+}
