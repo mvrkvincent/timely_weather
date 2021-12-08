@@ -9,6 +9,9 @@
 # production
 /build
 
+# development
+/requests
+
 # misc
 .DS_Store
 .env.local

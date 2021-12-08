@@ -1,13 +1,13 @@
 import axios from 'axios';
 import {createAction} from '@reduxjs/toolkit';
 
-const receiveWeather = createAction('RECEIVE_WEATHER');
+const receiveCurrentWeather = createAction('RECEIVE_CURRENT_WEATHER');
 
-export const fetchWeather = () => async dispatch => {
+export const fetchCurrentWeather = cityName => async dispatch => {
     try {
-        const res = await axios.get('')
-        dispatch(receiveWeather(res.data))
+        const res = await axios.get(`api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.OW_API_KEY}`)
+        dispatch(receiveCurrentWeather(res.data))
     } catch (err) {
-        console.log(`${err} - in fetchWeather`)
+        console.log(`${err} - in fetchCurrentWeather`)
     };
 };
