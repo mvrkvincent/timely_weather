@@ -1,20 +1,31 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
-import { fetchInitialLocation } from '../actions/location_actions';
+import {fetchInitialWeather} from "../actions/weather_actions";
 import './Nav.css';
 
-const Nav = ({location, fetchInitialLocation}) => {
+const Nav = ({location, fetchInitialWeather}) => {
 
     let lastUpdated = new Date(location?.timestamp).toLocaleTimeString();
 
+    
     useEffect(() => {
-        fetchInitialLocation()
-    }, [fetchInitialLocation])
+        const onSuccess = position => {
+            const lat = position.coords.latitude.toString();
+            const lon = position.coords.longitude.toString();
+            fetchInitialWeather(lat, lon)
+        };
+    
+        const onFailure = error => {
+            console.warn(error);
+        };
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onFailure);  
+    }, [fetchInitialWeather])
 
     return(
         <div className='Nav'>
             <div className='col'>
-                <span>{location?.lat}</span>
+                <span>{location?.city}</span>
                 <span className='sub'>Location</span>
             </div>
             <h1>TimelyWEATHER</h1>
@@ -26,12 +37,12 @@ const Nav = ({location, fetchInitialLocation}) => {
     );
 };
 
-const msp = ({location}) => ({
-    location: location,
+const msp = ({user}) => ({
+    location: user.location,
 });
 
 const mdp = dispatch => ({
-    fetchInitialLocation: () => dispatch(fetchInitialLocation()),
+    fetchInitialWeather: (lat, lon) => dispatch(fetchInitialWeather(lat, lon))
 });
 
 export default connect(msp, mdp)(Nav);

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import Nav from './components/Nav'
+import Nav from './components/Nav';
+import Widgets from './components/Widgets';
 import './App.css';
 
 const App = ({store}) => {
@@ -8,9 +9,7 @@ const App = ({store}) => {
         <Provider store={store}>
             <div className='App'>
                 <Nav />
-                <div className='data-grid'>
-
-                </div>
+                <Widgets />
             </div>
         </Provider>
     )
