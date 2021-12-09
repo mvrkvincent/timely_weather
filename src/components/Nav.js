@@ -1,15 +1,37 @@
-import React from 'react';
-import './Nav.css'
+import React, { useEffect } from 'react';
+import {connect} from 'react-redux';
+import { fetchInitialLocation } from '../actions/location_actions';
+import './Nav.css';
 
-const Nav = () => {
+const Nav = ({location, fetchInitialLocation}) => {
+
+    let lastUpdated = new Date(location?.timestamp).toLocaleTimeString();
+
+    useEffect(() => {
+        fetchInitialLocation()
+    }, [fetchInitialLocation])
 
     return(
         <div className='Nav'>
-            <span>Location</span>
+            <div className='col'>
+                <span>{location?.lat}</span>
+                <span className='sub'>Location</span>
+            </div>
             <h1>TimelyWEATHER</h1>
-            <span>Updated</span>
+            <div className='col'>
+                <span>{lastUpdated}</span>
+                <span className='sub'>Last Updated</span>
+            </div>
         </div>
     );
-}
+};
 
-export default Nav;
+const msp = ({location}) => ({
+    location: location,
+});
+
+const mdp = dispatch => ({
+    fetchInitialLocation: () => dispatch(fetchInitialLocation()),
+});
+
+export default connect(msp, mdp)(Nav);

@@ -19,3 +19,8 @@
 .Nav span {
     font-size: 1.5rem;
 }
+
+.Nav .sub {
+    font-size: 1rem;
+    color: #aeaeae;
+}

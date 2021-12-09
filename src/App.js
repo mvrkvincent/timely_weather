@@ -1,15 +1,18 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import Nav from './components/Nav'
 import './App.css';
 
-const App = () => {
+const App = ({store}) => {
     return(
-        <div className='App'>
-            <Nav />
-            <div className='data-grid'>
+        <Provider store={store}>
+            <div className='App'>
+                <Nav />
+                <div className='data-grid'>
 
+                </div>
             </div>
-        </div>
+        </Provider>
     )
 }
 
