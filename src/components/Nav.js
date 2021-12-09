@@ -6,7 +6,7 @@ import './Nav.css';
 const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
     const [city, setCity] = useState(location?.city || '');
 
-    let lastUpdated = new Date(location?.timestamp).toLocaleTimeString();
+    let lastUpdated = new Date(location?.timestamp * 1000).toLocaleTimeString();
 
     useEffect(() => {
         if (city === '') {
@@ -52,7 +52,11 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
                 </form>
                 <span className='sub'>Location</span>
             </div>
-            <h1>TimelyWEATHER</h1>
+            <div className='title'>
+                <h1>timely</h1>
+                <img src='/images/icon.png' alt='Timely Weather Logo' />
+                <h1>WEATHER</h1>
+            </div>
             <div className='col'>
                 <span>{location?.timestamp ? lastUpdated : ''}</span>
                 <span className='sub'>Last Updated</span>

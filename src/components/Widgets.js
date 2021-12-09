@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import Current from './Current';
 import './Widgets.css';
 
 const Widgets = () => {
@@ -7,7 +8,7 @@ const Widgets = () => {
 
     return(
         <div className='Widgets'>
-
+            <Current />
         </div>
     );
 };

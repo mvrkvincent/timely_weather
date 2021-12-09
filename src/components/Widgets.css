@@ -1,8 +1,6 @@
 .Widgets {
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
+    width: 75vw;
     height: 80vh;
-    border: 1px solid #000000;
-    border-radius: 1rem;
 };

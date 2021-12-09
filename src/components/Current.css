@@ -1,0 +1,21 @@
+.Current {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    background: url('../assets/images/large-icon.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 28vh;
+    width: 25vh;
+    padding: 4rem 5rem 12rem 5rem;
+}
+
+.Current img {
+    height: 25rem;
+}
+
+.Current span {
+    text-transform: capitalize;
+}

@@ -32,3 +32,12 @@
 .Nav .col {
     width: 33%;
 }
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    height: 1.75rem;
+}
