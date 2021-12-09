@@ -9,7 +9,9 @@
 .Nav input {
     outline: none;
     font-size: 1.5rem;
+    text-align: center;
     border: 1px solid transparent;
+    width: 100%;
 }
 
 .Nav input:focus {
@@ -17,10 +19,16 @@
 }
 
 .Nav span {
+    width: 100%;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .Nav .sub {
     font-size: 1rem;
     color: #aeaeae;
+}
+
+.Nav .col {
+    width: 33%;
 }

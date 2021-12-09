@@ -5,7 +5,7 @@ const initialState = {
 
 export const userReducer = createReducer(initialState, builder => {
     builder
-        .addCase('RECEIVE_CURRENT_WEATHER', (state, action) => {
+        .addCase('RECEIVE_WEATHER', (state, action) => {
                 const location = {
                         city: action.payload.name,
                         lat: action.payload.coord.lat,
