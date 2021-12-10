@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.Temp i {
+    margin: 0 1rem;
+}
+
 .range {
     font-size: 3rem;
 }

@@ -9,9 +9,9 @@ export const Temp = ({feel}) => {
 
     return(
         <div className='Temp'>
-            <span className="range row"><i class="fas fa-arrow-up" /> {low}</span>
+            <span className="range row"><i class="fas fa-arrow-down" /> {low}</span>
             <span>{now}</span>
-            <span className="range row">{high} <i class="fas fa-arrow-down" /></span>
+            <span className="range row">{high} <i class="fas fa-arrow-up" /></span>
         </div>
     );
 

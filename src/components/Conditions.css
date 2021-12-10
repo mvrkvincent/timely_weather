@@ -7,7 +7,22 @@
 }
 
 .condition {
+    display: flex;
+    justify-content: space-around;
     border: 1px solid #FFFFFF;
+    border-radius: 1rem;
     font-size: 2rem;
-    color: #FFFFFF
+    padding: 1vw;
+    margin-bottom: 1vw;
+    min-width: 15vw;
+}
+
+.condition i {
+    color: #FFFFFF;
+    font-size: 4rem;
+}
+
+.condition .sub {
+    font-size: 1.5rem;
+    color: #FFFFFF;
 }
