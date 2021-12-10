@@ -1,9 +1,16 @@
 .Widgets {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
     width: 75vw;
     min-height: 80vh;
-};
+}
+
+.now {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 .Loading {
     font-size: 20rem;

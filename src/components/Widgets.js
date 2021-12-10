@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Current} from './Current';
-import {Temp} from './Temp'
+import {Temp} from './Temp';
 import {Conditions} from "./Conditions";
 import './Widgets.css';
 
@@ -11,21 +11,19 @@ const Widgets = ({current, feel, wind}) => {
         return(
             <div className='Widgets'>
                 <Temp feel={feel}/>
-                <div className="row">
+                <div className="now">
                     <Current current={current}/>
                     <Conditions conditions={{...feel, wind,}}/>
                 </div>
             </div>
         );
-    }
+    };
 
     const generateLoad = () => {
         return(
-            <div className='Loading'>
-                <span>LOADING...</span>
-            </div>
-        )
-    }
+            <div className='Loading'>LOADING...</div>
+        );
+    };
 
     return(
         <>

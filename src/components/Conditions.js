@@ -11,8 +11,8 @@ export const Conditions = ({conditions}) => {
                 <span>Heat Index</span>
             </div>
             <div className='condition col'>
-                <i class="fas fa-wind"></i>
                 <span>{wind.speed} MPH</span>
+                <span>Wind</span>
             </div>
             <div className='condition col'>
                 <span>{humidity}%</span>
