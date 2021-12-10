@@ -11,11 +11,10 @@ const config = {
     // }
   };
 
-export const fetchLocalWeather = coords => async dispatch => {
-    debugger
+export const fetchLocalWeather = (lat, lon) => async dispatch => {
     try {
         const res = await axios
-            .get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
+            .get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
         dispatch(receiveWeather(res.data))
     } catch (err) {
         console.log(`${err} - in fetchLocalWeather`)

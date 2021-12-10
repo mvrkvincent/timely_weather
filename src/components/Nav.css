@@ -28,9 +28,15 @@
 .Nav .sub {
     font-size: 1rem;
     color: #aeaeae;
+    margin-top: 0.5rem;
+}
+
+.Nav .sub i {
+    margin-right: 0.5rem;
 }
 
 .Nav .col {
+    align-items: center;
     width: 33%;
 }
 
