@@ -5,7 +5,6 @@ const initialState = {};
 export const weatherReducer = createReducer(initialState, builder => {
     builder
         .addCase('RECEIVE_WEATHER', (state, action) => {
-            debugger
             state.current = action.payload.weather[0];
             state.feel = action.payload.main;
             state.wind = action.payload.wind;

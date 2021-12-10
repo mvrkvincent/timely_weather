@@ -2,5 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     width: 75vw;
-    height: 80vh;
+    min-height: 80vh;
 };
+
+.Loading {
+    font-size: 20rem;
+    color: red;
+}

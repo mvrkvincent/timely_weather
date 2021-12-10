@@ -1,0 +1,13 @@
+.Temp {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10%;
+    width: 100%;
+    font-size: 5rem;
+    color: #FFFFFF;
+    align-items: center;
+}
+
+.range {
+    font-size: 2.5rem;
+}

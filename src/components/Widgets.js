@@ -1,20 +1,43 @@
 import React from "react";
 import {connect} from "react-redux";
-import Current from './Current';
+import {Current} from './Current';
+import {Temp} from './Temp'
+import {Conditions} from "./Conditions";
 import './Widgets.css';
 
-const Widgets = () => {
+const Widgets = ({current, feel, wind}) => {
 
+    const generateWidgets = () => {
+        return(
+            <div className='Widgets'>
+                <Temp feel={feel}/>
+                <div className="row">
+                    <Current current={current}/>
+                    <Conditions conditions={{...feel, wind,}}/>
+                </div>
+            </div>
+        );
+    }
+
+    const generateLoad = () => {
+        return(
+            <div className='Loading'>
+                <span>LOADING...</span>
+            </div>
+        )
+    }
 
     return(
-        <div className='Widgets'>
-            <Current />
-        </div>
+        <>
+            {current ? generateWidgets() : generateLoad()}
+        </>
     );
 };
 
 const msp = ({weather}) => ({
-
+    feel: weather.feel,
+    wind: weather.wind,
+    current: weather.current,
 });
 
 const mdp = dispatch => ({

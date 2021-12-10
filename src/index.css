@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F4F2EF;
 }
 
 code {
@@ -24,4 +23,12 @@ input {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
