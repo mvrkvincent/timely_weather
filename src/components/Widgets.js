@@ -21,7 +21,10 @@ const Widgets = ({current, feel, wind}) => {
 
     const generateLoad = () => {
         return(
-            <div className='Loading'>LOADING...</div>
+            <div className="Loading">
+                <div className="animation" />
+                <span>Fetching Your Weather</span>
+            </div>
         );
     };
 

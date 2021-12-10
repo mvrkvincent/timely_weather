@@ -12,6 +12,37 @@
 }
 
 .Loading {
-    font-size: 20rem;
-    color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    justify-content: center;
+    font-size: 4rem;
+    color: #FFFFFF;
+}
+
+.animation {
+    border: 1rem solid #FFFFFF;
+    border-top: 1rem solid #000000;
+    border-radius: 5rem;
+    margin-bottom: 2rem;
+    height: 5vw;
+    width: 5vw;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media only screen and (max-width: 1000px) {
+    .Widgets {
+        align-items: center;
+    }
+    .now {
+        flex-direction: column;
+        align-items: center;
+        width: 50vw;
+    } 
 }

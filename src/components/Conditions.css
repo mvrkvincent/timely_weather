@@ -23,6 +23,20 @@
 }
 
 .condition .sub {
+    margin-top: 0.5rem;
     font-size: 1.5rem;
     color: #FFFFFF;
+}
+
+@media only screen and (max-width: 1000px) {
+    .Conditions {
+        padding: 0;
+        align-items: center;
+    } 
+
+    .condition {
+        margin: 1.5rem 0;
+        padding: 2rem 0;
+        width: 100%;
+    }
 }

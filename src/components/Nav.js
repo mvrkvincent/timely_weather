@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux';
+import {requestGeoLocation} from '../utils/requestGeoLocation';
 import {fetchLocalWeather, fetchCurrentWeather} from "../actions/weather_actions";
 import './Nav.css';
 
 const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
-    const [city, setCity] = useState(location?.city || '');
+    const [city, setCity] = useState('');
 
     let lastUpdated = new Date(location?.timestamp * 1000).toLocaleTimeString();
 
     useEffect(() => {
+        const fetchWeather = async () => {
+            try {
+                const {coords} = await requestGeoLocation()
+                const {latitude, longitude} = coords
+                fetchLocalWeather({latitude, longitude});
+            } catch (err) {
+                fetchCurrentWeather('Fort Worth')
+            }
+        }
         if (city === '') {
-            const onSuccess = position => {
-                const lat = position.coords.latitude.toString();
-                const lon = position.coords.longitude.toString();
-                fetchLocalWeather(lat, lon)
-            };
-        
-            const onFailure = error => {
-                fetchCurrentWeather(encodeURI('Fort Worth'));
-                console.warn(error);
-            };
-    
-            navigator.geolocation.getCurrentPosition(onSuccess, onFailure);  
+            fetchWeather();
         }
 
-    }, [fetchLocalWeather, fetchCurrentWeather, city]);
+    }, [fetchLocalWeather, fetchCurrentWeather ,city]);
 
     useEffect(() => {
-        if (location?.city) {
+        if (location.city) {
             setCity(location.city)
         }
     }, [location])

@@ -1,9 +1,9 @@
 .Temp {
     display: flex;
-    width: 100%;
     font-size: 5rem;
     color: #FFFFFF;
     align-items: center;
+    padding: 1.5rem 0;
 }
 
 .Temp i {
@@ -12,4 +12,14 @@
 
 .range {
     font-size: 3rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    .Temp {
+        width: 100vw;
+    }
+
+    .range {
+        font-size: 2rem;
+    }
 }

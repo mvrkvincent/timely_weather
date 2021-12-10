@@ -11,9 +11,11 @@ const config = {
     // }
   };
 
-export const fetchLocalWeather = (lat, lon) => async dispatch => {
+export const fetchLocalWeather = coords => async dispatch => {
+    debugger
     try {
-        const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
+        const res = await axios
+            .get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
         dispatch(receiveWeather(res.data))
     } catch (err) {
         console.log(`${err} - in fetchLocalWeather`)
@@ -22,7 +24,8 @@ export const fetchLocalWeather = (lat, lon) => async dispatch => {
 
 export const fetchCurrentWeather = city => async dispatch => {
     try {
-        const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
+        const res = await axios
+            .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
         dispatch(receiveWeather(res.data))
     } catch (err) {
         console.log(`${err} - in fetchCurrentWeather`)

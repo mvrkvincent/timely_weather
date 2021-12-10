@@ -1,6 +1,12 @@
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
+        location: {
+                city: null,
+                lat: null,
+                lon: null,
+                timestamp: null,   
+        }
 };
 
 export const userReducer = createReducer(initialState, builder => {
