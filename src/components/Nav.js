@@ -59,21 +59,23 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
     return(
         <div className='Nav'>
             <div className='col'>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        value={city}
-                        onChange={e => setCity(e.target.value)} 
-                    />
-                    <input type="submit" style={{display: "none"}} value="submit"/>
-                </form>
-                <button 
-                    className='sub' 
-                    onClick={toggleSavedCity}
-                    style={{color: savedCity ? 'red' : 'inherit'}}
-                >
-                    <i class="fas fa-map-pin" /> Location
-                </button>
+                <div className='options row'>
+                    <button 
+                        onClick={toggleSavedCity}
+                        style={{color: savedCity ? 'red' : 'inherit'}}
+                    >
+                        <i class="fas fa-map-pin" /> 
+                    </button>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            value={city}
+                            onChange={e => setCity(e.target.value)} 
+                        />
+                        <input type="submit" style={{display: "none"}} value="submit"/>
+                    </form>
+                </div>
+                <span className='sub'>Location</span>
             </div>
             <div className='title'>
                 <h1>timely</h1>
@@ -81,12 +83,14 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
                 <h1>WEATHER</h1>
             </div>
             <div className='col'>
-                <span>{location?.timestamp ? lastUpdated : ''}</span>
-                <button className='sub' onClick={handleSubmit}>
-                    <i class="fas fa-sync-alt"></i> Last Updated
-                </button>
+                <div className='options row'>
+                    <button className='sub' onClick={handleSubmit}>
+                        <i class="fas fa-sync-alt" />
+                    </button>
+                    <span>{location?.timestamp ? lastUpdated : ''}</span>
+                </div>
+                <span className='sub'>Last Updated</span>
             </div>
-            
         </div>
     );
 };
