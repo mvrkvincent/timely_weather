@@ -14,12 +14,20 @@
     border: 0;
     padding: 0.5rem 0;
     text-align: center;
-    border-left: 1px solid #eaeaea;
 }
 
 .Nav button {
     margin: 0;
     padding: 0 1rem;
+    background-color: #eaeaea;
+    height: 100%;
+    width: 20%;
+    transition: all 0.15s linear;
+}
+
+.Nav button:hover {
+    background-color: #909090;
+    transition: all 0.15s linear;
 }
 
 .Nav span {
@@ -41,13 +49,16 @@
 }
 
 .options {
-    border: 1px solid #eaeaea;
+    border-top: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
     border-radius: 1rem;
     margin-bottom: 0.5rem;
+    overflow: hidden;
+    height: 3rem;
 }
 
 .options span {
     padding: 0.5rem 2rem;
-    border-left: 1px solid #eaeaea;
-
+    min-width: 10vw;
 }

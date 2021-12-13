@@ -5,9 +5,9 @@ import {requestGeoLocation} from '../utils/requestGeoLocation';
 import {fetchLocalWeather, fetchCurrentWeather} from "../actions/weather_actions";
 import './Nav.css';
 
-const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
-    const [city, setCity] = useState('');
-    const [savedCity, setSavedCity] = useState('')
+const Nav = ({location, errors, fetchLocalWeather, fetchCurrentWeather}) => {
+    const [city, setCity] = useState('Fetching...');
+    const [savedCity, setSavedCity] = useState('');
     
     let lastUpdated = new Date(location?.timestamp * 1000).toLocaleTimeString();
 
@@ -17,21 +17,23 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
         const fetchInitialWeather = async () => {
             try {
                 const {coords} = await requestGeoLocation()
-                const {latitude, longitude} = coords
+                const {latitude, longitude} = coords;
                 fetchLocalWeather(latitude, longitude);
             } catch (err) {
                 fetchCurrentWeather('Fort Worth')
             }
         };
 
-        if (!city && cityCookie) {
+        if (errors) {
+            fetchInitialWeather();
+        } else if (city === 'Fetching...' && cityCookie) {
             fetchCurrentWeather(cityCookie);
             setSavedCity(cityCookie)
-        } else if (!city) {
+        } else if (city === 'Fetching...') {
             fetchInitialWeather();
         };
 
-    }, [fetchLocalWeather, fetchCurrentWeather, savedCity, city]);
+    }, [fetchLocalWeather, fetchCurrentWeather, savedCity, city, errors]);
 
     useEffect(() => {
         if (location.city) setCity(location.city)
@@ -42,7 +44,7 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
         e.preventDefault();
         if (savedCity) {
             cookies.remove('city'); 
-            setSavedCity(''); 
+            setSavedCity('');
         } else {
             cookies.set('city', city);
             setSavedCity(city);
@@ -61,8 +63,9 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
             <div className='col'>
                 <div className='options row'>
                     <button 
+                        className='sub'
                         onClick={toggleSavedCity}
-                        style={{color: savedCity ? 'red' : 'inherit'}}
+                        style={{color: savedCity ? 'red' : '#AEAEAE'}}
                     >
                         <i class="fas fa-map-pin" /> 
                     </button>
@@ -75,7 +78,9 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
                         <input type="submit" style={{display: "none"}} value="submit"/>
                     </form>
                 </div>
-                <span className='sub'>Location</span>
+                {errors ?
+                    <span className='sub'>City Not Found, Redirecting...</span> : 
+                    <span className='sub'>{savedCity ? 'Saved' : 'Current'} Location</span>}
             </div>
             <div className='title'>
                 <h1>timely</h1>
@@ -84,10 +89,10 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
             </div>
             <div className='col'>
                 <div className='options row'>
-                    <button className='sub' onClick={handleSubmit}>
-                        <i class="fas fa-sync-alt" />
-                    </button>
-                    <span>{location?.timestamp ? lastUpdated : ''}</span>
+                        <button className='sub' onClick={handleSubmit}>
+                            <i class="fas fa-sync-alt" />
+                        </button>
+                    <span>{location.timestamp ? lastUpdated : 'Updating...'}</span>
                 </div>
                 <span className='sub'>Last Updated</span>
             </div>
@@ -95,8 +100,9 @@ const Nav = ({location, fetchLocalWeather, fetchCurrentWeather}) => {
     );
 };
 
-const msp = ({user}) => ({
+const msp = ({user, errors}) => ({
     location: user.location,
+    errors: errors.weather
 });
 
 const mdp = dispatch => ({

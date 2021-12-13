@@ -2,6 +2,8 @@ import axios from 'axios';
 import {createAction} from '@reduxjs/toolkit';
 
 const receiveWeather = createAction('RECEIVE_WEATHER');
+const receiveWeatherError = createAction('RECEIVE_WEATHER_ERROR');
+const clearWeatherErrors = createAction('CLEAR_WEATHER_ERRORS');
 
 // const timestamp = new Date().toISOString();
 
@@ -16,8 +18,9 @@ export const fetchLocalWeather = (lat, lon) => async dispatch => {
         const res = await axios
             .get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
         dispatch(receiveWeather(res.data))
+        dispatch(clearWeatherErrors())
     } catch (err) {
-        console.log(`${err} - in fetchLocalWeather`)
+        dispatch(receiveWeatherError(err))
     };
 };
 
@@ -26,8 +29,9 @@ export const fetchCurrentWeather = city => async dispatch => {
         const res = await axios
             .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_OW_API_KEY}`, config);
         dispatch(receiveWeather(res.data))
+        dispatch(clearWeatherErrors())
     } catch (err) {
-        console.log(`${err} - in fetchCurrentWeather`)
+        dispatch(receiveWeatherError(err))
     };
 };
 
