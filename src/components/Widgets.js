@@ -8,6 +8,7 @@ import './Widgets.css';
 
 const Widgets = ({current, feel, wind}) => {
     const conditionProps = returnConditionProps(current?.icon);
+    const style = current?.icon ? {backgroundImage: `${conditionProps?.color}`} : {};
 
     const generateWidgets = () => {
         return(
@@ -35,7 +36,7 @@ const Widgets = ({current, feel, wind}) => {
     };
 
     return(
-        <div className="Widgets" style={{backgroundImage: `${conditionProps?.color}`}}>
+        <div className="Widgets" style={style}>
             {current ? generateWidgets() : generateLoad()}
             <footer>
                 <span>Built by <a href='https://mvrk.dev'> Mark Vincent </a> in Brooklyn, NY</span>
