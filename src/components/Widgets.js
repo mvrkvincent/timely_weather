@@ -11,7 +11,7 @@ const Widgets = ({current, feel, wind}) => {
 
     const generateWidgets = () => {
         return(
-            <div className="Widgets" style={{backgroundImage: `${conditionProps.color}`}}>
+            <>
                 <Temp feel={feel}/>
                 <div className='display'>
                     <div className="now">
@@ -21,7 +21,7 @@ const Widgets = ({current, feel, wind}) => {
                         <Conditions conditions={{...feel, wind,}}/>
                     </div>
                 </div>
-            </div>
+            </>
         );
     };
 
@@ -35,9 +35,13 @@ const Widgets = ({current, feel, wind}) => {
     };
 
     return(
-        <>
+        <div className="Widgets" style={{backgroundImage: `${conditionProps?.color}`}}>
             {current ? generateWidgets() : generateLoad()}
-        </>
+            <footer>
+                <span>Built by <a href='https://mvrk.dev'> Mark Vincent </a> in Brooklyn, NY</span>
+                <a href='https://github.com/mvrkvincent/timely_weather'><i class="fab fa-github" /> Project Repo</a>
+            </footer>
+        </div>
     );
 };
 

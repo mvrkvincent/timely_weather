@@ -12,7 +12,7 @@ const App = ({store}) => {
                 <Widgets />
             </div>
         </Provider>
-    )
-}
+    );
+};
 
 export default App;

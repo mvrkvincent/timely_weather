@@ -11,8 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 h1 {
   margin: 0;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 button {
@@ -40,4 +46,12 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
 }
