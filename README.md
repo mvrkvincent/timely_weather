@@ -1,3 +1,5 @@
-# TimelyWEATHER
+# timelyWEATHER
+
+---
 
 Teleweather for Everyone!
