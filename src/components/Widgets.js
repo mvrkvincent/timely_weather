@@ -3,17 +3,23 @@ import {connect} from "react-redux";
 import {Current} from './Current';
 import {Temp} from './Temp';
 import {Conditions} from "./Conditions";
+import {returnConditionProps} from '../utils/conditionProps'
 import './Widgets.css';
 
 const Widgets = ({current, feel, wind}) => {
+    const conditionProps = returnConditionProps(current?.icon);
 
     const generateWidgets = () => {
         return(
-            <div className='Widgets'>
+            <div className="Widgets" style={{backgroundImage: `${conditionProps.color}`}}>
                 <Temp feel={feel}/>
-                <div className="now">
-                    <Current current={current}/>
-                    <Conditions conditions={{...feel, wind,}}/>
+                <div className='display'>
+                    <div className="now">
+                        <Current 
+                            conditionProps={conditionProps}
+                            current={current}/>
+                        <Conditions conditions={{...feel, wind,}}/>
+                    </div>
                 </div>
             </div>
         );
