@@ -66,6 +66,7 @@ const Nav = ({location, errors, fetchLocalWeather, fetchCurrentWeather}) => {
                         className='sub'
                         onClick={toggleSavedCity}
                         style={{color: savedCity ? 'red' : '#AEAEAE'}}
+                        title={savedCity ? 'Unpin City' : 'Pin City'}
                     >
                         <i class="fas fa-map-pin" /> 
                     </button>
@@ -80,7 +81,7 @@ const Nav = ({location, errors, fetchLocalWeather, fetchCurrentWeather}) => {
                 </div>
                 {errors ?
                     <span className='sub'>City Not Found, Redirecting...</span> : 
-                    <span className='sub'>{savedCity ? 'Saved' : 'Current'} Location</span>}
+                    <span className='sub'>{savedCity ? 'Pinned' : 'Current'} Location</span>}
             </div>
             <div className='title'>
                 <h1>timely</h1>
@@ -89,7 +90,11 @@ const Nav = ({location, errors, fetchLocalWeather, fetchCurrentWeather}) => {
             </div>
             <div className='col'>
                 <div className='options row'>
-                        <button className='sub' onClick={handleSubmit}>
+                        <button 
+                            className='sub' 
+                            onClick={handleSubmit}
+                            title='Update'
+                        >
                             <i class="fas fa-sync-alt" />
                         </button>
                     <span>{location.timestamp ? lastUpdated : 'Updating...'}</span>
