@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {store} from './store/store';
+import './reset.css';
 import './index.css';
 
 document.addEventListener('DOMContentLoaded', () => {

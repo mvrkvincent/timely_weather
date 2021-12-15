@@ -10,6 +10,7 @@ const Widgets = ({current, feel, wind}) => {
     const conditionProps = returnConditionProps(current?.icon);
     const style = current?.icon ? {backgroundImage: `${conditionProps?.color}`} : {};
 
+
     const generateWidgets = () => {
         return(
             <>
@@ -18,7 +19,8 @@ const Widgets = ({current, feel, wind}) => {
                     <div className="now">
                         <Current 
                             conditionProps={conditionProps}
-                            current={current}/>
+                            current={current}
+                        />
                         <Conditions conditions={{...feel, wind,}}/>
                     </div>
                 </div>
@@ -37,6 +39,7 @@ const Widgets = ({current, feel, wind}) => {
 
     return(
         <div className="Widgets" style={style}>
+            <div></div>
             {current ? generateWidgets() : generateLoad()}
             <footer>
                 <span>Built by <a href='https://mvrk.dev'> Mark Vincent </a> in Brooklyn, NY</span>

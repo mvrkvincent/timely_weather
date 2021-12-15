@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    min-height: 15vh;
+    min-height:15%;
     background-color: #FFFFFF;
 }
 
@@ -40,10 +40,11 @@
 }
 
 .Nav img {
-    height: 1.75rem;
+    height: 3rem;
 }
 
 .title {
+    font-size: 3rem;
     display: flex;
     align-items: center;
 }

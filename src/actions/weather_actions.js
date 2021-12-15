@@ -5,13 +5,13 @@ const receiveWeather = createAction('RECEIVE_WEATHER');
 const receiveWeatherError = createAction('RECEIVE_WEATHER_ERROR');
 const clearWeatherErrors = createAction('CLEAR_WEATHER_ERRORS');
 
-// const timestamp = new Date().toISOString();
+const timestamp = new Date().toISOString();
 
 const config = {
-    // headers: {
-    //     'Timestamp': timestamp,
-    // }
-  };
+    Headers: {
+        'Timestamp': timestamp,
+    }
+};
 
 export const fetchLocalWeather = (lat, lon) => async dispatch => {
     try {
