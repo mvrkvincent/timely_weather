@@ -3,11 +3,13 @@ import {connect} from "react-redux";
 import {Current} from './Current';
 import {Temp} from './Temp';
 import {Conditions} from "./Conditions";
-import {returnConditionProps} from '../utils/conditionProps'
+import {CONDITION_PROPS} from '../utils/conditionProps';
+import Forecast from "./Forecast";
 import './Widgets.css';
+import './Forecast.css';
 
 const Widgets = ({current, feel, wind}) => {
-    const conditionProps = returnConditionProps(current?.icon);
+    const conditionProps = CONDITION_PROPS[current?.icon];
     const style = current?.icon ? {backgroundImage: `${conditionProps?.color}`} : {};
 
 
@@ -18,11 +20,11 @@ const Widgets = ({current, feel, wind}) => {
                 <div className='display'>
                     <div className="now">
                         <Current 
-                            conditionProps={conditionProps}
                             current={current}
                         />
                         <Conditions conditions={{...feel, wind,}}/>
                     </div>
+                    <Forecast />
                 </div>
             </>
         );

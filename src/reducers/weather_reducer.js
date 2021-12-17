@@ -11,5 +11,9 @@ export const weatherReducer = createReducer(initialState, builder => {
             state.rain = action.payload.rain;
             state.snow = action.payload.snow;
             state.cloudCover = action.payload.clouds.all;
+        })
+        .addCase('RECEIVE_FORECAST', (state, action) => {
+            state.forecast = action.payload.daily;
+            state.alerts = action.payload.alerts;
         });
 });

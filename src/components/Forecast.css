@@ -1,0 +1,23 @@
+.Forecast {
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ForecastModule {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: #FFFFFF;
+    min-height: 10vh;
+}
+
+.ForecastModule i {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+}

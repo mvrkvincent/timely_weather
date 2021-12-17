@@ -1,4 +1,4 @@
-const CONDITION_PROPS = {
+export const CONDITION_PROPS = {
     '01d': {ico:'fas fa-sun', color: 'linear-gradient(330deg, red , yellow)',},
     '02d': {ico:'fas fa-cloud-sun', color: 'linear-gradient(330deg, blue, yellow)',},
     '03d': {ico:'fas fa-cloud-sun', color: 'linear-gradient(330deg, blue, yellow)',},
@@ -18,7 +18,3 @@ const CONDITION_PROPS = {
     '13n': {ico:'fas fa-snowflake', color: 'linear-gradient(330deg, black, #eaeaea)',},
     '50n': {ico:'fas fa-smog', color: 'linear-gradient(330deg, black, #eaeaea)',},
 };
-
-export const returnConditionProps = icon => {
-    return CONDITION_PROPS[icon];
-}
