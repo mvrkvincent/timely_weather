@@ -12,6 +12,10 @@
     padding: 4rem 5rem 12rem 5rem;
 }
 
+.Current h1 {
+    font-size: 2rem;
+}
+
 .Current i {
     display: flex;
     justify-content: center;
